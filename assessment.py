@@ -61,6 +61,8 @@ def cost_w_tax(*args):
     #Returns the total resulting from the applicable conditions. 
 
 print cost_w_tax(9, 'WA', 30)
+#This line calls the functino with sample details (9 percent tax, Washington as
+#the state and thirty as the base cost). The printed result is 32.7.
 
 #I have assumed that, unlike the practice exercise, a user may input a whole
 #(ex. 9) instead of a decimal (ex. .09) for the tax rate. The function either 
@@ -75,23 +77,113 @@ print cost_w_tax(9, 'WA', 30)
 #        and returns a boolean if the fruit is a "strawberry", "cherry", or 
 #        "blackberry".
 
+def is_berry(fruit_name):
+    """
+    This function checks to see if an inputted fruit name is either a strawberry,
+    cherry or blackberry.
+    """
+
+    return fruit_name in ['strawberry', 'cherry', 'blackberry']
+    #Returns a boolean value (True or False) depending on whether the passed
+    #fruit_name is in the list. 
+
+print is_berry('strawberry')
+#Calls the function with the sample word strawberry and prints a True result
+
 #    (b) Write another function, shipping_cost(), which calculates shipping cost
 #        by taking a fruit name as a string, calling the `is_berry()` function 
 #        within the `shipping_cost()` function and returns `0` if ``is_berry()
 #        == True``, and `5` if ``is_berry() == False``.
 
+def shipping_cost(fruit_name):
+    """
+    This function returns a shipping cost based on whether the fruit name is an
+    identified fruit or not.
+    """
+
+    if is_berry(fruit_name) == True:
+    #Evaluates if the passed fruit_name is among the fruits in the 
+    #is_berry function
+        return 0
+        #Returns 0 for 'strawberry', 'cherry' or 'blackberry'
+    else:
+    #Evaluates if the passed fruit_name is not among the fruits in the
+    #is_berry function
+        return 5
+        #Returns 5 for fruits other than 'strawberry', 'cherry' or 'blackberry'
+
+print shipping_cost('mango')
+#Calls the function with the sample fruit_name 'mango' and returns a shipping 
+#cost of 5. 
+
 # 2. (a) Write a function, `is_hometown()`, which takes a town name as a string
 #        and evaluates to `True` if it is your hometown, and `False` otherwise.
-#
+
+def is_hometown(town):
+    """
+    This function checks to see if the town input is an identified hometown.
+    """
+    return town in ['Seattle', 'seattle', 'Emerald City', 'The 206']
+    #Returns a boolean value (True or False) depending on whether the passed
+    #town is in the list. The list accounts for a capitalization option and 
+    #a couple nicknames when determining whether the input is the hometown. 
+
+print is_hometown('Seattle')
+print is_hometown('Portland')
+#These lines call the function with Seattle and Portland as sample towns.
+#Seattle and Portland returned True and False, respectively. 
+
 #    (b) Write a function, `full_name()`, which takes a first and last name as
 #        arguments as strings and returns the concatenation of the two names in
 #        one string.
+
+def full_name(first, last):
+    """
+    This function takes first and last names as passed arguments and concatenates
+    them with a space in between the names.
+    """
+    return first + ' ' + last
+    #Returns the concatenation of the passed first name, a space and the passed 
+    #last name.
+
+print full_name('Nada', 'Bseikri')
+#Calls the function and prints the concatenation produced by the return line.
+#This line uses my name for sample first and last names and prints 'Nada Bseikri'.
 #
 #    (c) Write a function, `hometown_greeting()`, which takes a home town, a
 #        first name, and a last name as strings as arguments, calls both
 #        `is_hometown()` and `full_name()` and prints "Hi, 'full name here',
 #        we're from the same place!", or "Hi 'full name here', where are you 
 #        from?" depending on what `is_hometown()` evaluates to.
+
+def hometown_greeting(town, first, last):
+    """
+    This function prints one of two greetings (each containing an inputted first 
+    and last name) depending on whether someone is from an identified hometown.
+    """
+
+    if is_hometown(town) == True:
+    #Checks to see if passed town argument is the hometown in the is_hometown
+    #function
+        return 'Hi, ' + full_name(first, last) + ', we are from the same place!'
+        #When the hometown is the same, this return line concatenates 'Hi, ', a
+        #result of the full_name function when a first and last name are passed
+        #and, lastly, ', we are from the same place!'
+    else:
+    #This part of the conditional block handles towns that are not Seattle, as
+    #determined by the is_hometown function. 
+        return 'Hi, ' + full_name(first, last) + ', where are you from?'
+        #When the hometowns are different, this return line concatenates 'Hi, ', a
+        #result of the full_name function when a first and last name are passed
+        #and, lastly, ', where are you from?'
+
+print hometown_greeting('Seattle', 'Nada', 'Bseikri')
+print hometown_greeting('Toronto', 'Aubrey', 'Graham')
+#These lines call the function and print the greeting for myself, a Seattlite and
+#Drake (using his real name) as a Toronto native. The print results, 
+#respectively, are:
+#       Hi, Nada Bseikri, we are from the same place!
+#       Hi, Aubrey Graham, where are you from?
 
 #####################################################################
 
