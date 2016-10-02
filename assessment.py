@@ -60,6 +60,8 @@ def cost_w_tax(*args):
     return total
     #Returns the total resulting from the applicable conditions. 
 
+print cost_w_tax(9, 'WA', 30)
+
 #I have assumed that, unlike the practice exercise, a user may input a whole
 #(ex. 9) instead of a decimal (ex. .09) for the tax rate. The function either 
 #assigns a decimal rate or divides a non-CA rate by 100 to get a usable decimal.
