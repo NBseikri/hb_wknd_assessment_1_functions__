@@ -193,10 +193,62 @@ print hometown_greeting('Toronto', 'Aubrey', 'Graham')
 #    inside of it. The outer function should take ``x``, an integer which
 #    defaults to 1. The inner function should take ``y`` and add ``x`` and ``y`` together.
 
+
+def increment(x=1):
+    """
+    This function takes a x value in the outer function, moves to the inner function,
+    and, in the inner function, returns x + y.
+    """
+    #Per instructions, included x defaulted to 1 as the argument
+    def add(y):
+    #Created a inner function that takes y as an argument
+        return x + y 
+        #Adds x from outer function to y in inner function
+
+#Assuming this block of code reflects the intended instructions (I'm not sure 
+#it does), I can't understand how y is meant to take on a value unless it is set 
+#globally before the function is declared. Is that the intention here? Otherwise, 
+#you can only pass an x when you call the function, correct? Y will remain 
+#unassigned? 
+
 # 2. Call the function ``increment()`` with x = 5. Assign what is returned to a variable name, addfive. Call 
 #    addfive with y = 5. Call again with y = 20.
 
+addfive = increment(x=5)
+#Calls function with x=5 and assigns result to addfive variable
+
+y = 5
+#Sets y to 5
+
+print addfive
+#Calls function again with x=5
+
+y = 20 
+#Sets y to 20
+
+print addfive
+#Calls function again with x=5
+
+#As indicated above, I'm not confident about my coding for #1 and #2. When I 
+#ran the code for #2, it produced None as a response. It would be meaningful to
+#discuss the structure and use of nested functions during advising.   
+
 # 3. Make a function that takes in a number and a list of numbers. It should append
 #    the number to the list of numbers and return the list.
+
+def appendage(list_num, number):
+    """
+    This function appends an inputted number to an inputted list of numbers and
+    returns the resulting list of numbers.  
+    """
+
+    list_num.append(number)
+    #This line appends the inputted number to the inputted list
+    return list_num
+    #This line returns the resulting, appended list
+
+print appendage([1,2,3,4,5], 6)
+#This line calls the function with a sample list of numbers 1,2,3,4,5] and a 
+#the number 6. The printed result is [1,2,3,4,5,6].
 
 #####################################################################
